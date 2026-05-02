@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&family=VT323&display=swap');
+
+:root {
+  --xp-titlebar-start: #0054e3;
+  --xp-titlebar-end: #0046be;
+  --xp-menu-bg: #ece9d8;
+  --xp-border: #aca899;
+  --xp-taskbar-start: #3a6bc5;
+  --xp-taskbar-end: #2455a8;
+  --xp-start-btn-start: #3daa35;
+  --xp-start-btn-end: #2d8a25;
+  --xp-link: #003399;
+  --font-pixel: 'Silkscreen', monospace;
+  --font-body: 'VT323', monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #app {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-pixel);
+}
+
+body {
+  background: #000;
+}
