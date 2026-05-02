@@ -13,7 +13,7 @@
         <div class="search-box">🔍 查找联系人...</div>
         <div class="list-header">所有联系人 (1)</div>
         <div class="contact-item active">
-          <div class="item-avatar"><img src="/头像.jpg" alt="头像" /></div>
+          <div class="item-avatar"><img src="/图片/头像.jpg" alt="头像" /></div>
           <div>
             <div class="item-name">叶柏君</div>
             <div class="item-role">前端开发 · 大三</div>
@@ -23,7 +23,7 @@
 
       <div class="contact-detail">
         <div class="detail-header">
-          <div class="detail-avatar"><img src="/头像.jpg" alt="头像" /></div>
+          <div class="detail-avatar"><img src="/图片/头像.jpg" alt="头像" /></div>
           <div>
             <div class="detail-name">叶柏君 / BERGIN YE</div>
             <div class="detail-school">广东财经大学 · 大三</div>

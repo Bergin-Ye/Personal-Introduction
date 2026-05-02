@@ -7,7 +7,7 @@
 
     <div class="about-body">
       <div class="sidebar">
-        <div class="avatar"><img src="/头像.jpg" alt="头像" /></div>
+        <div class="avatar"><img src="/图片/头像.jpg" alt="头像" /></div>
         <div class="name">叶柏君</div>
         <div class="subtitle">BERGIN YE</div>
 
