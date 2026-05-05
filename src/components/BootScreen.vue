@@ -40,7 +40,10 @@ import { ref, onMounted } from 'vue'
 const emit = defineEmits(['complete'])
 const fading = ref(false)
 
+const images = ['/spacey.jpg', '/tapsphere.jpg', '/心理健康.jpg', '/flowmind.jpg', '/美团.jpg']
+
 onMounted(() => {
+  images.forEach(src => { const img = new Image(); img.src = src })
   setTimeout(() => {
     fading.value = true
     setTimeout(() => emit('complete'), 800)
