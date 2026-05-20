@@ -40,7 +40,7 @@ import { ref, onMounted } from 'vue'
 const emit = defineEmits(['complete'])
 const fading = ref(false)
 
-const images = ['/spacey.jpg', '/tapsphere.jpg', '/心理健康.jpg', '/flowmind.jpg', '/美团.jpg']
+const images = ['/spacey.jpg', '/tapsphere.jpg', '/心理健康.jpg', '/flowmind.jpg', '/美团.jpg', '/可玩广.jpg', '/duckquiz.jpg']
 
 onMounted(() => {
   images.forEach(src => { const img = new Image(); img.src = src })

@@ -7,6 +7,11 @@
       <span>帮助(H)</span>
     </div>
 
+    <div class="mode-tabs">
+      <div class="mode-tab" :class="{ active: mode === 'self' }" @click="switchMode('self')">✍️ 自研项目</div>
+      <div class="mode-tab" :class="{ active: mode === 'vibe' }" @click="switchMode('vibe')">⚡ Vibe Coding</div>
+    </div>
+
     <div class="viewer-body">
       <div class="image-area" ref="imageArea">
         <div class="image-wrapper">
@@ -33,7 +38,7 @@
         <div class="nav-buttons">
           <button :disabled="currentIndex === 0" @click="prev">◀ 上一个</button>
           <span>{{ currentIndex + 1 }} / {{ projects.length }}</span>
-          <button :disabled="currentIndex === projects.length - 1" @click="next">下一个 ▶</button>
+          <button :disabled="currentIndex >= projects.length - 1" @click="next">下一个 ▶</button>
         </div>
       </div>
     </div>
@@ -49,8 +54,10 @@
 import { ref, computed, nextTick } from 'vue'
 
 const imageArea = ref(null)
+const mode = ref('self')
+const currentIndex = ref(0)
 
-const projects = [
+const selfProjects = [
   {
     name: 'SpaceY 船票定制',
     meta: '创意视觉作品',
@@ -103,13 +110,42 @@ const projects = [
   },
 ]
 
-const currentIndex = ref(0)
-const currentProject = computed(() => projects[currentIndex.value])
+const vibeProjects = [
+  {
+    name: '可玩广告工作室',
+    meta: '互动广告生成器',
+    tags: ['Vue 3', 'Phaser 3', 'Vite', 'JSZip'],
+    description: '在线可玩广告制作工具，内置 3 款游戏模板（跑酷射击、合成升级、飞刀乱斗），支持自定义素材上传、参数调节与实时预览，一键导出为自包含 HTML 或 ZIP 包。',
+    role: 'Vibe Coding',
+    tech: 'Vue 3.5, Phaser 3, JSZip, FileSaver, Vite',
+    image: '/可玩广.jpg',
+    github: 'https://github.com/Bergin-Ye/playable-ad-studio',
+  },
+  {
+    name: 'Duck Quiz',
+    meta: '八股文面试刷题',
+    tags: ['Vue 3', 'uni-app', 'SCSS', '多端'],
+    description: '面向前端求职者的面试刷题应用，支持 H5、微信小程序等多端运行。包含每日刷题、错题本、学习统计与心情记录等功能，暖色系 UI 设计。',
+    role: 'Vibe Coding',
+    tech: 'Vue 3, uni-app, Vite, SCSS',
+    image: '/duckquiz.jpg',
+    github: 'https://github.com/Bergin-Ye/Duck-Quiz',
+  },
+]
+
+const projects = computed(() => mode.value === 'self' ? selfProjects : vibeProjects)
+const currentProject = computed(() => projects.value[currentIndex.value])
 
 function scrollToTop() {
   nextTick(() => {
     if (imageArea.value) imageArea.value.scrollTop = 0
   })
+}
+
+function switchMode(m) {
+  mode.value = m
+  currentIndex.value = 0
+  scrollToTop()
 }
 
 function prev() {
@@ -120,7 +156,7 @@ function prev() {
 }
 
 function next() {
-  if (currentIndex.value < projects.length - 1) {
+  if (currentIndex.value < projects.value.length - 1) {
     currentIndex.value++
     scrollToTop()
   }
@@ -142,6 +178,37 @@ function next() {
   font-size: 11px;
   display: flex;
   gap: 14px;
+}
+
+.mode-tabs {
+  display: flex;
+  background: var(--xp-menu-bg);
+  padding: 0 8px;
+  gap: 2px;
+  border-bottom: 1px solid var(--xp-border);
+}
+
+.mode-tab {
+  padding: 4px 14px;
+  font-size: 11px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: 3px 3px 0 0;
+  color: #666;
+}
+
+.mode-tab:hover {
+  background: #e8e8d8;
+}
+
+.mode-tab.active {
+  background: #fff;
+  color: #333;
+  font-weight: bold;
+  border-color: var(--xp-border);
+  position: relative;
+  top: 1px;
 }
 
 .viewer-body {
